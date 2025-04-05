@@ -1,0 +1,157 @@
+/* latin */
+@font-face {
+  font-family: 'B612';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/b612/v12/3JnySDDxiSz36j6yGQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+@keyframes load {
+	from {opacity: 0}
+	to {opacity: 1}
+}
+
+body {
+	background-color: #111;
+	font-family: 'B612', helvetica, sans-serif;
+	color: white;
+	font-size: 12pt;
+	
+	animation-name: load;
+}
+
+main {
+	width: 800px;
+	padding: 5px;
+	min-height: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 60px;
+}
+
+header {
+	width: 800px;
+	margin-bottom: 20px;
+	overflow-y: visible;
+	text-align: center;
+}
+
+nav {
+	display: flex;
+	flex-direction: row;
+	margin: 0px;
+	padding: 0px;
+	display: flex;
+	height: 32px;
+	gap: 5px;
+	flex: 1;
+	
+	margin-bottom: 10px;
+}
+
+nav a {
+	list-style-type: none;
+	flex: 1;
+	background-color: #222;
+	padding: 5px;
+	padding-left: 10px;
+	box-shadow: 0px 5px 10px black;
+}
+
+.songs {
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	min-height: 400px;
+}
+
+.songs article {
+	padding: 10px;
+	background-color: #222;
+	display: flex;
+}
+
+h1 {
+	margin: 0px;
+}
+
+p {
+	margin: 0px;
+	margin-top: 5px;
+	padding: 2px;
+	margin-right: 10px;
+}
+
+img {
+	image-rendering: -moz-crisp-edges;
+	image-rendering: crisp-edges;
+}
+
+.nomargin {
+	margin: 0px;
+}
+
+ul {
+	padding-bottom: 5px;
+}
+
+a {
+	color: #9988ff;
+}
+
+.SongName {
+	font-weight: bold;
+}
+
+.Platforms {
+	display: flex;
+	flex-direction: row;
+	gap: 5px;
+
+}
+
+.SongPlatform {
+	width: 32px;
+	height: 32px;
+	margin-right: 5px;
+}
+
+.SongDesc {
+	font-style: italic;
+	overflow-wrap: break-word;
+	margin-right: 10px;
+	max-width: 400px;
+}
+
+.SongMeta {
+	display: flex;
+	flex-direction: column;
+}
+
+.SongData {
+	display: flex;
+	flex-direction: column;
+	margin-left: auto;
+}
+
+.SongInteract {
+	width: 32px;
+	height: 32px;
+}
+
+.SongCounter {
+	margin-right: 10px;
+}
+
+.horizontal {
+	display: flex;
+	flex-direction: row;
+}
+
+.vertical {
+	display: flex;
+	flex-direction: column;
+}
