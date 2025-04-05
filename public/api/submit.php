@@ -10,7 +10,8 @@
 	}
 	
 	if (!array_key_exists("tags", $_POST)) $_POST['tags'] = "";
-	if (!array_key_exists("desc", $_POST)) $_POST['desc'] = "";
+	if (!array_key_exists("summary", $_POST)) $_POST['summary'] = "";
+	if (!array_key_exists("songdesc", $_POST)) $_POST['songdesc'] = "";
 	
 	$db = new SQLite3(DB_PATH);
 	
@@ -32,16 +33,17 @@
 	
 	$songid = uniqid('s_');
 	
-	$st = $db->prepare("INSERT INTO songs (songid, authorid, songurl, createdtime, tags, name, desc)
-						VALUES (?, ?, ?, ?, ?, ?, ?)");
+	$st = $db->prepare("INSERT INTO songs (songid, authorid, songurl, createdtime, tags, name, summary, description)
+						VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 	$st->bindParam(1, $songid, SQLITE3_TEXT);
 	$st->bindParam(2, $authorid, SQLITE3_TEXT);
 	$st->bindParam(3, $_POST['url'], SQLITE3_TEXT);
 	$st->bindValue(4, time(), SQLITE3_TEXT);
 	$st->bindParam(5, $_POST["tags"], SQLITE3_TEXT);
 	$st->bindParam(6, $_POST["songname"], SQLITE3_TEXT);
-	$st->bindParam(7, $_POST["songdesc"], SQLITE3_TEXT);
+	$st->bindParam(7, $_POST["summary"], SQLITE3_TEXT);
+	$st->bindParam(8, $_POST["description"], SQLITE3_TEXT);
 	$st->execute();
 	
-	echo "Song successfully submitted."
+	echo "Song successfully submitted. ID: " . $songid;
 ?>

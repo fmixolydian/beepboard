@@ -62,7 +62,7 @@ while ($result = $q->fetchArray(SQLITE3_ASSOC)) {
 		<div class="horizontal">
 			<p class="SongName">' . $result['name'] . '</p>
 			<p> · </p>
-			<p class="SongDesc">' . $result['desc'] . '</p>
+			<p class="SongDesc">' . $result['summary'] . '</p>
 		</div>
 		<div class="horizontal">
 			<img class="SongInteract" src="/assets/like.png">

@@ -42,6 +42,12 @@ require '../header.php';
 		<br>
 		<br>
 		
+		<label for="summary">Song Summary</label>
+		<input name="summary" type="text"></textarea>
+		
+		<br>
+		<br>
+		
 		<label for="songdesc">Song Description</label>
 		<textarea name="songdesc"></textarea>
 		

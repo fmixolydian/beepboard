@@ -20,7 +20,8 @@
 		<main>
 			<header>
 				<h1>beepboard<sub>0.1</sub></h1>
-				<p>a bulletin board for beepbox songs</p>
+				<p>a bulletin board for beepbox songs<br>
+				<small>sorry if the ui is terrible, i suck at frontend design lmao</small></p>
 			</header>
 			<nav>
 				<a href="/songs.php">song list</a>
