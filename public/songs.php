@@ -1,9 +1,5 @@
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 require '../header.php';
 if (!array_key_exists('sort',  $_GET)) $_GET['sort']  = 'newest';
 if (!array_key_exists('after', $_GET)) $_GET['after'] = 0;
