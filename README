@@ -1,4 +1,0 @@
-== BEEPBOARD ==
-
-to host your own instance, copy `config_example.php` to `config.php` and edit it
-then copy data/template.db to data/<name>.db for a new empty database
