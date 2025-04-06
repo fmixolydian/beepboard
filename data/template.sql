@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS "interactions" (
 	"timestamp"	INTEGER,
 	PRIMARY KEY("userid","songid")
 );
+
 CREATE TABLE IF NOT EXISTS "songs" (
 	"songid"	TEXT NOT NULL UNIQUE,
 	"authorid"	TEXT NOT NULL,
@@ -20,7 +21,9 @@ CREATE TABLE IF NOT EXISTS "songs" (
 	"desc"	TEXT,
 	"featured"	INTEGER NOT NULL DEFAULT 0,
 	PRIMARY KEY("songid")
-);CREATE TABLE IF NOT EXISTS "users" (
+);
+
+CREATE TABLE IF NOT EXISTS "users" (
 	"userid"	TEXT NOT NULL UNIQUE,
 	"pfpurl"	TEXT,
 	"bio"	TEXT,
@@ -30,4 +33,5 @@ CREATE TABLE IF NOT EXISTS "songs" (
 	"token"	TEXT,
 	PRIMARY KEY("userid")
 );
+
 COMMIT;
