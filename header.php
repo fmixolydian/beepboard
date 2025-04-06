@@ -2,6 +2,14 @@
 	
 	require 'config.php';
 	
+	$db = new SQLite3(DB_PATH);
+	
+	# get user data
+	$st = $db->prepare("SELECT * FROM users WHERE token = :t");
+	$st->bindParam(':t', $_COOKIE['token'], SQLITE3_TEXT);
+	$data = $st->execute()->fetchArray();
+	
+	
 ?>
 
 <!DOCTYPE html>
@@ -23,9 +31,19 @@
 				<p>a bulletin board for beepbox songs<br>
 				<small>sorry if the ui is terrible, i suck at frontend design lmao</small></p>
 			</header>
+			
+			<div class="HeadInfo">
+
+<?php
+	if ($data) {
+		echo "<p>" . $data['username'] . "</p>";
+	}
+?>
+			</div>
+			
 			<nav>
+				<a href="/index.php">home</a>
 				<a href="/songs.php">song list</a>
 				<a href="/submit.php">submit</a>
-				<a href="/login.php">register / login</a>
-				<a href="/about.php">about</a>
+				
 			</nav>

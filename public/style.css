@@ -167,3 +167,8 @@ small {
 	width: 16px;
 	height: 16px;
 }
+
+.HeadInfo {
+	display: flex;
+	flex-direction: row;
+}
