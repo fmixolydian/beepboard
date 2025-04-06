@@ -70,6 +70,8 @@ while ($result = $q->fetchArray(SQLITE3_ASSOC)) {
 			<p class="SongCounter">' . $result['likes'] . '</p>
 			<img class="SongInteract" src="/assets/downloads.png">
 			<p class="SongCounter">' . $result['downloads'] . '</p>
+			<img class="SongInteract" src="/assets/views.png">
+			<p class="SongCounter">' . $result['views'] . '</p>
 		</div>
 	</div>
 	
