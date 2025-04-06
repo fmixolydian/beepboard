@@ -42,7 +42,7 @@
 	$st->bindParam(5, $_POST["tags"], SQLITE3_TEXT);
 	$st->bindParam(6, $_POST["songname"], SQLITE3_TEXT);
 	$st->bindParam(7, $_POST["summary"], SQLITE3_TEXT);
-	$st->bindParam(8, $_POST["description"], SQLITE3_TEXT);
+	$st->bindParam(8, $_POST["songdesc"], SQLITE3_TEXT);
 	$st->execute();
 	
 	echo "Song successfully submitted. ID: " . $songid;

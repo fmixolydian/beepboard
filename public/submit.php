@@ -4,10 +4,6 @@ require '../config.php';
 
 $db = new SQLite3(DB_PATH);
 
-function wrong_login() {
-	
-}
-
 if (array_key_exists("token", $_COOKIE)) {
 	$name = $db->querySingle("SELECT username FROM users WHERE token = '" .
 	                          $_COOKIE['token'] . "'");

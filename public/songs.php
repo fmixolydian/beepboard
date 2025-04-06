@@ -60,12 +60,13 @@ while ($result = $q->fetchArray(SQLITE3_ASSOC)) {
 <article>
 	<div class="SongMeta">
 		<div class="horizontal">
-			<p class="SongName">' . $result['name'] . '</p>
+			<p class="SongName"><a href="/viewsong.php?id=' . $result['songid'] . '">' .
+				$result['name'] . '</a></p>
 			<p> · </p>
 			<p class="SongDesc">' . $result['summary'] . '</p>
 		</div>
 		<div class="horizontal">
-			<img class="SongInteract" src="/assets/like.png">
+			<img class="SongInteract" src="/assets/likes.png">
 			<p class="SongCounter">' . $result['likes'] . '</p>
 			<img class="SongInteract" src="/assets/downloads.png">
 			<p class="SongCounter">' . $result['downloads'] . '</p>

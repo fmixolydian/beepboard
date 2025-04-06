@@ -160,3 +160,10 @@ small {
 	color: lightgray;
 	font-size: 0.7em;
 }
+
+.SongLike {
+	margin-top: auto;
+	margin-bottom: auto;
+	width: 16px;
+	height: 16px;
+}
