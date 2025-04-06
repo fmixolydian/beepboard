@@ -15,6 +15,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="UTF-8">
 		<title>beepboard</title>
 		<link rel="stylesheet" href="/style.css">
 		<style>
@@ -22,9 +23,19 @@
 			background-color: #111;
 		}
 		</style>
+		
+		<script>
+			function reload(url) {
+				if (url != undefined) {
+					window.location.href = url;
+				}
+				window.location.reload(true);
+			}
+		</script>
 	</head>
 	
 	<body>
+		<iframe id="null" name="null"></iframe>
 		<main>
 			<header>
 				<h1>beepboard<sub>0.1</sub></h1>

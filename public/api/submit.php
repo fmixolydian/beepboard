@@ -45,5 +45,5 @@
 	$st->bindParam(8, $_POST["songdesc"], SQLITE3_TEXT);
 	$st->execute();
 	
-	echo "Song successfully submitted. ID: " . $songid;
+	header("Location: /viewsong.php?id=" . $songid);
 ?>

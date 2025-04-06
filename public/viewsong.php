@@ -50,7 +50,7 @@ $author = $db->querySingle("SELECT username FROM users WHERE userid = '" . $data
 					if (!$db->querySingle("SELECT timestamp FROM interactions WHERE type = 'like' "
 						 				. "AND songid = '" . $data['songid']
 						 				. "' AND userid = '" . $userid . "'")) {
-						echo '<a class="SongLike" href="/api/interact.php?type=like&id=' . $data['songid'] . '">
+						echo '<a class="SongLike" target=null onclick="reload()" href="/api/interact.php?type=like&id=' . $data['songid'] . '">
 									<img src="/assets/upvote.png">
 								</a>';
 					}

@@ -27,7 +27,7 @@
 		# store it in a cookie (yummy)
 		setcookie('token', $token, time()+60*60*24*30, '/');
 		
-		echo 'logged in successfully! token: ' . $token;
+		header("Location: /");
 	} else {
 	    http_response_code(403);
 	    echo 'wrong credentials.';

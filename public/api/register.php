@@ -38,5 +38,6 @@
 	
 	$st->execute();
 	
-	echo "Account successfully registered";
+	# todo: redirect to user page
+	header("Location: /");
 ?>
