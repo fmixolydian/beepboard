@@ -1,6 +1,7 @@
 <?php
 	
 	require '../../config.php';
+	require '../../functions.php';
 	
 	if (!array_key_exists("songname", $_POST) ||
 	    !array_key_exists("url", $_POST)) {
@@ -9,11 +10,9 @@
 	    die;
 	}
 	
-	if (!array_key_exists("tags", $_POST)) $_POST['tags'] = "";
-	if (!array_key_exists("summary", $_POST)) $_POST['summary'] = "";
-	if (!array_key_exists("songdesc", $_POST)) $_POST['songdesc'] = "";
-	
-	$db = new SQLite3(DB_PATH);
+	BB_default($_POST['tags'],     "");
+	BB_default($_POST['summary'],  "(no summary)");
+	BB_default($_POST['songdesc'], "(no description)");
 	
 	# first, get authorid from token
 	if (!array_key_exists("token", $_COOKIE)) {
@@ -21,10 +20,7 @@
 		die;
 	}
 	
-	$st = $db->prepare("SELECT userid FROM users WHERE token = :token");
-	$st->bindParam(":token", $_COOKIE['token'], SQLITE3_TEXT);
-	$q = $st->execute();
-	$authorid = $q->fetchArray()[0];
+	$authorid = BB_getUserdataByToken($_COOKIE['token'])['userid'];
 	
 	if ($authorid == NULL) {
 		header("Location: /login.php");
@@ -44,6 +40,6 @@
 	$st->bindParam(7, $_POST["summary"], SQLITE3_TEXT);
 	$st->bindParam(8, $_POST["songdesc"], SQLITE3_TEXT);
 	$st->execute();
-	
+							
 	header("Location: /viewsong.php?id=" . $songid);
 ?>

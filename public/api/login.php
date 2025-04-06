@@ -1,6 +1,7 @@
 <?php
 	
 	require '../../config.php';
+	require '../../functions.php';
 	
 	if (!array_key_exists("username", $_POST) ||
 	    !array_key_exists("password", $_POST)) {
@@ -9,12 +10,10 @@
 	    die;
 	}
 	
-	$db = new SQLite3(DB_PATH);
-	
 	# grab password hash
-	$st = $db->prepare("SELECT password FROM users WHERE username = :name");
-	$st->bindParam(':name', $_POST['username'], SQLITE3_TEXT);
-	$hash = $st->execute()->fetchArray()[0];
+	$data = BB_getUserdataByName($_POST['username']);
+	
+	$hash = $data['password'];
 	
 	if (password_verify($_POST['password'], $hash)) {
 		$token = uniqid('t_', true);

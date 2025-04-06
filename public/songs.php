@@ -1,13 +1,12 @@
 <?php
 
 require '../header.php';
-if (!array_key_exists('sort',  $_GET)) $_GET['sort']  = 'newest';
-if (!array_key_exists('after', $_GET)) $_GET['after'] = 0;
 
-$db = new SQLite3(DB_PATH);
+BB_default($_GET['sort'],  'newest');
+BB_default($_GET['after'], 0);
+
 
 $statement = "SELECT * from songs ";
-
 $statement_footer = " LIMIT 10 OFFSET :offset";
 
 switch ($_GET['sort']) {
@@ -36,9 +35,7 @@ $statement .= $statement_footer;
 
 echo "<code>$statement</code>";
 
-$st = $db->prepare($statement);
-$st->bindParam(':offset', $_GET['after'], SQLITE3_INTEGER);
-$q = $st->execute();
+$q = BB_sqlStatement($statement, array(':offset' => $_GET['after']));
 
 ?>
 
@@ -61,23 +58,23 @@ while ($result = $q->fetchArray(SQLITE3_ASSOC)) {
 	<div class="SongMeta">
 		<div class="horizontal">
 			<p class="SongName"><a href="/viewsong.php?id=' . $result['songid'] . '">' .
-				$result['name'] . '</a></p>
+				htmlentities($result['name']) . '</a></p>
 			<p> · </p>
-			<p class="SongDesc">' . $result['summary'] . '</p>
+			<p class="SongDesc">' . htmlentities($result['summary']) . '</p>
 		</div>
 		<div class="horizontal">
 			<img class="SongInteract" src="/assets/likes.png">
-			<p class="SongCounter">' . $result['likes'] . '</p>
+			<p class="SongCounter">' . htmlentities($result['likes']) . '</p>
 			<img class="SongInteract" src="/assets/downloads.png">
-			<p class="SongCounter">' . $result['downloads'] . '</p>
+			<p class="SongCounter">' . htmlentities($result['downloads']) . '</p>
 			<img class="SongInteract" src="/assets/views.png">
-			<p class="SongCounter">' . $result['views'] . '</p>
+			<p class="SongCounter">' . htmlentities($result['views']) . '</p>
 		</div>
 	</div>
 	
 	<div class="SongData">
 		<div class="Platforms">
-			<p> by <em class="SongAuthor">' . $username . '</em></p>
+			<p> by <em class="SongAuthor">' . htmlentities($username) . '</em></p>
 			<a target=_blank href="/api/downloadsong.php?id=' . $result['songid'] . '">
 				<img class="SongPlatform" src="/assets/beepbox.png"/>
 			</a>

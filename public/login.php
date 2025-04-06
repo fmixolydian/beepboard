@@ -23,6 +23,10 @@ require '../header.php';
 		<br>
 		<input type="submit" formaction="/api/login.php"    value="Login">
 		<input type="submit" formaction="/api/register.php" value="Register">
+		
+		<p>
+		<small>p.s. if you forget your password,
+		please contact me on discord so that i can reset it.</small></p>
 	</form>
 </article>
 			

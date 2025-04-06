@@ -1,6 +1,7 @@
 <?php
 	
 	require '../../config.php';
+	require '../../functions.php';
 	
 	$db = new SQLite3(DB_PATH);
 	
@@ -11,11 +12,7 @@
 	}
 	
 	# check if token is valid
-	$st = $db->prepare("SELECT userid FROM users WHERE token = :t");
-	$st->bindParam(':t', $_COOKIE['token'], SQLITE3_TEXT);
-	$data = $st->execute()->fetchArray();
-	
-	if ($data) {
+	if (BB_getUserdataByToken($_COOKIE['token'])) {
 		# token valid
 		$st = $db->prepare("UPDATE users SET token = NULL WHERE token = :t");
 		$st->bindParam(':t', $_COOKIE['token'], SQLITE3_TEXT);

@@ -1,13 +1,13 @@
 <?php
 
 require '../config.php';
-
-$db = new SQLite3(DB_PATH);
+require '../functions.php';
 
 if (array_key_exists("token", $_COOKIE)) {
-	$name = $db->querySingle("SELECT username FROM users WHERE token = '" .
-	                          $_COOKIE['token'] . "'");
-	if ($name == NULL) {
+	
+	$data = BB_getUserdataByToken($_COOKIE['token']);
+	
+	if ($data == NULL) {
 		header('Location: /login.php');
 		die;
 	}

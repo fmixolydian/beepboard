@@ -10,17 +10,12 @@ if (!array_key_exists('id', $_GET)) {
 
 require '../header.php';
 
-$db = new SQLite3(DB_PATH);
+BB_sqlStatement("UPDATE songs SET views = views + 1 WHERE songid = :id",
+					array(':id' => $_GET['id'])
+				);
 
-$st = $db->prepare("UPDATE songs SET views = views + 1 WHERE songid = :id");
-$st->bindParam(':id', $_GET['id'], SQLITE3_TEXT);
-$st->execute();
-
-$st = $db->prepare("SELECT * FROM songs WHERE songid = :id");
-$st->bindParam(':id', $_GET['id'], SQLITE3_TEXT);
-$data = $st->execute()->fetchArray(SQLITE3_ASSOC);
-
-$author = $db->querySingle("SELECT username FROM users WHERE userid = '" . $data['authorid'] . "'");
+$data = BB_getSongdataById($_GET['id']);
+$author = BB_getUserdataById($data['authorid'])['username'];
 
 ?>
 
@@ -42,11 +37,9 @@ $author = $db->querySingle("SELECT username FROM users WHERE userid = '" . $data
 		<?php
 			
 			if (array_key_exists('token', $_COOKIE)) {
-				$st = $db->prepare("SELECT userid FROM users WHERE token = :t");
-				$st->bindParam(":t", $_COOKIE['token']);
-				$userid = $st->execute()->fetchArray();
+				$userid = BB_getUserdataByToken($_COOKIE['token']);
 				if ($userid) {
-					$userid = $userid[0];
+					$userid = $userid['userid'];
 					if (!$db->querySingle("SELECT timestamp FROM interactions WHERE type = 'like' "
 						 				. "AND songid = '" . $data['songid']
 						 				. "' AND userid = '" . $userid . "'")) {

@@ -1,15 +1,14 @@
 <?php
 	
 	require 'config.php';
-	
-	$db = new SQLite3(DB_PATH);
+	require 'functions.php';
 	
 	# get user data
-	$st = $db->prepare("SELECT * FROM users WHERE token = :t");
-	$st->bindParam(':t', $_COOKIE['token'], SQLITE3_TEXT);
-	$data = $st->execute()->fetchArray();
-	
-	
+	if (array_key_exists('token', $_COOKIE)) {
+		$data = BB_getUserdataByToken($_COOKIE['token']);
+	} else {
+		$data = null;
+	}
 ?>
 
 <!DOCTYPE html>

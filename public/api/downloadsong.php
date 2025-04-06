@@ -1,5 +1,6 @@
 <?php
 	require '../../config.php';
+	require '../../functions.php';
 	
 	if (!array_key_exists("id", $_GET)) {
 		http_response_code(400);
@@ -10,18 +11,16 @@
 	$db = new SQLite3(DB_PATH);
 	
 	# update downloads counter
-	$st = $db->prepare("UPDATE songs SET downloads = downloads + 1 WHERE songid = :id");
-	$st->bindParam(':id', $_GET['id'], SQLITE3_TEXT);
-	$st->execute();
+	BB_sqlStatement("UPDATE songs SET downloads = downloads + 1 WHERE songid = :id",
+						array(':id' => $_GET['id'])
+					);
 	
 	# get song url
-	$st = $db->prepare("SELECT songurl FROM songs WHERE songid = :id");
-	$st->bindParam(':id', $_GET['id'], SQLITE3_TEXT);
-	$url = $st->execute()->fetchArray()[0];
+	$result = BB_getSongdataById($_GET['id']);
 	
 	# try redirecting
-	if ($url) {
-		header('Location: ' . $url);
+	if ($result) {
+		header('Location: ' . $result['url']);
 		echo "Redirecting...";
 	} else {
 		http_response_code(404);
