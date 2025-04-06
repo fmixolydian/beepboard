@@ -34,16 +34,30 @@
 			
 			<div class="HeadInfo">
 
-<?php
-	if ($data) {
-		echo "<p>" . $data['username'] . "</p>";
-	}
-?>
+<div class="left">
+	<?php
+		if ($data) {
+			echo "<p>" . $data['username'] . "</p>";
+		} else {
+			echo "<p>You're not logged in.</p>";
+		}
+	?>
+</div>
+
+<div class="right">
+	<?php
+		if ($data) {
+			echo "<p><a href='/api/logout.php'>Logout</a></p>";
+		} else {
+			echo "<p><a href='/login.php'>Login</a></p>";
+		}
+	?>
+</div>
 			</div>
 			
 			<nav>
 				<a href="/index.php">home</a>
 				<a href="/songs.php">song list</a>
 				<a href="/submit.php">submit</a>
-				
+
 			</nav>

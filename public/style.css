@@ -172,3 +172,23 @@ small {
 	display: flex;
 	flex-direction: row;
 }
+
+.HeadInfo .left {
+	flex: 1;
+	text-align: left;
+}
+
+.HeadInfo .right {
+	flex: 1;
+	text-align: right;
+}
+
+.HeadInfo .left p {
+	margin-left: 0px;
+	margin-right: 5px;
+}
+
+.HeadInfo .right p {
+	margin-left: 5px;
+	margin-right: 0px;
+}
