@@ -43,7 +43,7 @@
 			$st = $db->prepare($statement);
 			
 			foreach ($params as $param => $value) {
-				$st->bindParam($param, $value);
+				$st->bindValue($param, $value);
 			}
 			
 			return $st->execute();
