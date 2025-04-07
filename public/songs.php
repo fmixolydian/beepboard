@@ -23,7 +23,7 @@ switch ($_GET['sort']) {
 		break;
 	
 	case 'popular':
-		$statement .= "ORDER BY downloads, views DESC";
+		$statement .= "ORDER BY likes, downloads DESC";
 		break;
 		
 	default:
