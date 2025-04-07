@@ -74,5 +74,6 @@
 				<a href="/index.php">home</a>
 				<a href="/songs.php">song list</a>
 				<a href="/submit.php">submit</a>
+				<a href="/about.php">about</a>
 
 			</nav>
