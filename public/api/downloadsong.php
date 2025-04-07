@@ -20,7 +20,7 @@
 	
 	# try redirecting
 	if ($result) {
-		header('Location: ' . $result['url']);
+		header('Location: ' . $result['songurl']);
 		echo "Redirecting...";
 	} else {
 		http_response_code(404);

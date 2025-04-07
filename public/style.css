@@ -199,3 +199,8 @@ small {
 	height: 0px;
 	position: absolute;
 }
+
+.SongLinks {
+	position: absolute;
+	right: 5px;
+}

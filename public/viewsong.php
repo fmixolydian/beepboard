@@ -25,12 +25,21 @@ $author = BB_getUserdataById($data['authorid'])['username'];
 		width: calc(800px - 10px * 2);
 		padding: 10px;
 		min-height: 200px;
+		position: relative;
 	}
 </style>
 
 <article>
+	
+	<div class="SongLinks">
+		<a target=_blank href="/api/downloadsong.php?id=<?= $data['songid'] ?>">
+			<img class="SongPlatform" src="/assets/beepbox.png"/>
+		</a>
+	</div>
+	
 	<h1><?= $data['name'] ?> </h1>
 	<p><?= $data['description'] ?> </p>
+	
 	<div class="horizontal">
 		<img class="SongInteract" src="/assets/likes.png">
 		
