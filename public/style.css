@@ -204,3 +204,11 @@ small {
 	position: absolute;
 	right: 5px;
 }
+
+img {
+	image-rendering: -moz-crisp-edges !important;
+	image-rendering: -webkit-optimize-contrast !important;
+	image-rendering: -o-crisp-edges !important;
+	image-rendering: pixelated !important;
+	image-rendering: optimizeSpeed !important;
+}
