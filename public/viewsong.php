@@ -43,8 +43,12 @@ $author = BB_getUserdataById($data['authorid'])['username'];
 					if (!$db->querySingle("SELECT timestamp FROM interactions WHERE type = 'like' "
 						 				. "AND songid = '" . $data['songid']
 						 				. "' AND userid = '" . $userid . "'")) {
-						echo '<a class="SongLike" onclick="reload()" href="/api/like.php?id=' . $data['songid'] . '">
+						echo '<a class="SongLike" href="/api/like.php?id=' . $data['songid'] . '">
 									<img src="/assets/upvote.png">
+								</a>';
+					} else {
+						echo '<a class="SongLike" href="/api/unlike.php?id=' . $data['songid'] . '">
+									<img src="/assets/downvote.png">
 								</a>';
 					}
 				}

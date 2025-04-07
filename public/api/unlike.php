@@ -30,24 +30,25 @@
 							 array(
 							 	':song' => $_GET['id'],
 							 	':user' => $data['userid']
-							 ))->fetchArray();
+							 )
+						)->fetchArray();
 	
-	if ($interaction) {
+	if (!$interaction) {
 		http_response_code(400);
-		echo 'you already liked this post.';
+		echo 'you havent liked this post yet.';
 		die;
 	}
 	
-	# add interaction
-	BB_sqlStatement("INSERT INTO interactions (timestamp, type, songid, userid)
-	VALUES (:tick, 'like', :song, :user)", array(
-		':tick' => time(),
-		':song' => $_GET['id'],
-		':user' => $data['userid']
-	));
+	# remove interaction
+	BB_sqlStatement("DELETE FROM interactions WHERE userid = :user AND songid = :song",
+		array(
+			':user' => $data['userid'],
+			':song' => $_GET['id']
+		)
+	);
 	
-	# increment likes counter
-	BB_sqlStatement("UPDATE songs SET likes = likes + 1 WHERE songid = :id", 
+	# decrement likes counter
+	BB_sqlStatement("UPDATE songs SET likes = likes - 1 WHERE songid = :id", 
 		array(':id' => $_GET['id'])
 	);
 	
