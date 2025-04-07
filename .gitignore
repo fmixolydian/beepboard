@@ -1,2 +1,2 @@
 config.php
-data/*.db
+./data/testing.db
