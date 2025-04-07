@@ -15,6 +15,11 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="description" content="a bulletin board for beepbox songs">
+		<meta name="keywords" content="beepbox, ultrabox, bulletin board, songs, social network,
+		chiptune, instrumental, music, song, melody, composition, tool, free, online, square wave, NES, NSF, ultrabox, beepbox, jummbox, pandorasbox, modbox, sandbox, goldbox, wackybox, todbox">
+		<meta name="application-name" content="beepboard">
+		<meta name="author" content="fmixolydian">
 		<title>beepboard</title>
 		<link rel="stylesheet" href="/style.css">
 		<style>
