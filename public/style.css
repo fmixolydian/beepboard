@@ -237,3 +237,10 @@ img {
 .CommentDate {
 	margin-top: 5px;
 }
+
+form.Comment {
+	background-color: #333;
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+}

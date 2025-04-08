@@ -46,9 +46,9 @@ $author = BB_getUserdataById($data['authorid'])['username'];
 		<?php
 			
 			if (array_key_exists('token', $_COOKIE)) {
-				$userid = BB_getUserdataByToken($_COOKIE['token']);
-				if ($userid) {
-					$userid = $userid['userid'];
+				$userdata = BB_getUserdataByToken($_COOKIE['token']);
+				if ($userdata) {
+					$userid = $userdata['userid'];
 					if (!$db->querySingle("SELECT timestamp FROM interactions WHERE type = 'like' "
 						 				. "AND songid = '" . $data['songid']
 						 				. "' AND userid = '" . $userid . "'")) {
@@ -88,9 +88,9 @@ $author = BB_getUserdataById($data['authorid'])['username'];
 		
 		echo '
 		<div class="Comment">
-			<div class="CommentAuthor">' . $username . '</div>
+			<div class="CommentAuthor">' . htmlentities($username) . '</div>
 			<div class="vertical">
-				<div class="CommentBody">' . $data['content'] . '</div>
+				<div class="CommentBody">' . htmlentities($data['content']) . '</div>
 				<div class="CommentDate" title="' . date(DATE_RFC2822, $data['timestamp']) .
 					'">' . BB_time_ago($data['timestamp']) .
 				'</div>
@@ -101,10 +101,30 @@ $author = BB_getUserdataById($data['authorid'])['username'];
 ?>
 	</div>
 	
+	
+	<form action="/api/comment.php" method="post" class="Comment">
+		<textarea name="content"></textarea>
+		<input type="submit" value="Post Comment">
+		<input type="hidden" name="songid" value="<?= $_GET['id'] ?>">
+	</form>
+	
+<?php
+	
+	if (array_key_exists('token', $_COOKIE)) {
+		$userdata = BB_getUserdataByToken($_COOKIE['token']);
+		if ($userdata) {
+			$userid = $userdata['userid'];
+			
+		}
+	} else {
+		echo '<p><a href="/login.php">Login</a> to post comments</p>';
+	}
+	
+?>
+	
 	<div class="horizontal">
 		<a class="SongLike" href="javascript:history.back()"><img src="/assets/back.png"></a>
 		<p>&nbsp;Go back</p>
 	</div>
-	
 	
 </article>
