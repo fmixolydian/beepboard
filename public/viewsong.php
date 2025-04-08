@@ -73,4 +73,38 @@ $author = BB_getUserdataById($data['authorid'])['username'];
 		<img class="SongInteract" src="/assets/views.png">
 		<p class="SongCounter"> <?= $data['views'] ?> </p>
 	</div>
+	
+	<div class="Comments">
+		
+<?php
+	$q = BB_sqlStatement('SELECT * FROM comments WHERE songid = :song',
+							array(':song' => $_GET['id']));
+	
+	while ($data = $q->fetchArray(SQLITE3_ASSOC)) {
+		# get username from userid
+		$userdata = BB_getUserdataById($data['userid']);
+		if (!$userdata) continue;
+		$username = $userdata['username'];
+		
+		echo '
+		<div class="Comment">
+			<div class="CommentAuthor">' . $username . '</div>
+			<div class="vertical">
+				<div class="CommentBody">' . $data['content'] . '</div>
+				<div class="CommentDate" title="' . date(DATE_RFC2822, $data['timestamp']) .
+					'">' . BB_time_ago($data['timestamp']) .
+				'</div>
+			</div>
+		</div>
+		';
+	}
+?>
+	</div>
+	
+	<div class="horizontal">
+		<a class="SongLike" href="javascript:history.back()"><img src="/assets/back.png"></a>
+		<p>&nbsp;Go back</p>
+	</div>
+	
+	
 </article>

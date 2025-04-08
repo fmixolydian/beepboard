@@ -34,4 +34,13 @@ CREATE TABLE IF NOT EXISTS "users" (
 	PRIMARY KEY("userid")
 );
 
+CREATE TABLE IF NOT EXISTS "comments" (
+	"commentid" TEXT NOT NULL,
+	"userid" TEXT NOT NULL,
+	"songid" TEXT NOT NULL,
+	"content" TEXT NOT NULL,
+	"timestamp" INTEGER NOT NULL,
+	PRIMARY KEY("commentid")
+);
+
 COMMIT;

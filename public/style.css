@@ -156,7 +156,7 @@ a {
 	flex-direction: column;
 }
 
-small {
+small, .CommentDate {
 	color: lightgray;
 	font-size: 0.7em;
 }
@@ -211,4 +211,29 @@ img {
 	image-rendering: -o-crisp-edges !important;
 	image-rendering: pixelated !important;
 	image-rendering: optimizeSpeed !important;
+}
+
+.Comments {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	margin-top: 10px;
+}
+
+.Comment {
+	background-color: #333;
+	width: calc(800px - 10px * 4);
+	padding: 10px;
+	
+	display: flex;
+	flex-direction: row;
+}
+
+.CommentAuthor {
+	min-width: 100px;
+	margin-right: 10px;
+}
+
+.CommentDate {
+	margin-top: 5px;
 }
