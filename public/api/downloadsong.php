@@ -20,7 +20,12 @@
 	
 	# try redirecting
 	if ($result) {
-		header('Location: ' . $result['songurl']);
+		if ($result['songurl'] < 4096) {
+			header('Location: ' . $result['songurl']);
+		} else {
+			echo '<!DOCTYPE html><meta http-equiv="refresh" content="0; url="' . $result['songurl'] . '">';
+		}
+		
 		echo "Redirecting...";
 	} else {
 		http_response_code(404);

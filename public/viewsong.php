@@ -80,24 +80,53 @@ $author = BB_getUserdataById($data['authorid'])['username'];
 	$q = BB_sqlStatement('SELECT * FROM comments WHERE songid = :song',
 							array(':song' => $_GET['id']));
 	
+	if (array_key_exists('token', $_COOKIE)) {
+		$clientuserdata = BB_getUserdataByToken($_COOKIE['token']);
+		if ($clientuserdata) {
+			$clientid = $clientuserdata['userid'];
+		} else {
+			$clientid = false;
+		}
+	} else {
+		$clientid = false;
+	}
+	
 	while ($data = $q->fetchArray(SQLITE3_ASSOC)) {
 		# get username from userid
 		$userdata = BB_getUserdataById($data['userid']);
 		if (!$userdata) continue;
 		$username = $userdata['username'];
 		
-		echo '
+		$content = '
 		<div class="Comment">
 			<div class="CommentAuthor">' . htmlentities($username) . '</div>
-			<div class="vertical">
-				<div class="CommentBody">' . htmlentities($data['content']) . '</div>
+			<div class="CommentBody">
+				<div class="CommentText">' . htmlentities($data['content']) . '</div>
 				<div class="CommentDate" title="' . date(DATE_RFC2822, $data['timestamp']) .
-					'">' . BB_time_ago($data['timestamp']) .
+					'">' . BB_time_ago($data['timestamp']);
+		
+		if ($clientid == $data['userid']) {
+			$content .= " · <a href='/api/deletecomment.php?id=" .
+						$data['userid'] . "'>delete</a>";
+		}
+		
+		$content .=
 				'</div>
 			</div>
 		</div>
 		';
+		
+		echo $content;
 	}
+
+/*
+ .
+				' · ' . '</div>
+			</div>
+		</div>
+		'
+*/
+
 ?>
 	</div>
 	

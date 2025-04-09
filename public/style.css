@@ -238,6 +238,18 @@ img {
 	margin-top: 5px;
 }
 
+.CommentBody {
+	flex-grow: 1;
+	word-wrap: break-word;
+	min-width: 0;
+}
+
+.CommentText {
+	max-height: 200px;
+	text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 form.Comment {
 	background-color: #333;
 	margin-top: 10px;
