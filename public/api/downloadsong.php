@@ -20,7 +20,7 @@
 	
 	# try redirecting
 	if ($result) {
-		if ($result['songurl'] < 4096) {
+		if (strlen($result['songurl']) < 4096) {
 			header('Location: ' . $result['songurl']);
 		} else {
 			echo '<!DOCTYPE html> <meta http-equiv="refresh" content="0; url=' . $result['songurl'] . '">';
