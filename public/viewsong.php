@@ -106,8 +106,7 @@ $author = BB_getUserdataById($data['authorid'])['username'];
 					'">' . BB_time_ago($data['timestamp']);
 		
 		if ($clientid == $data['userid']) {
-			$content .= " · <a href='/api/deletecomment.php?id=" .
-						$data['userid'] . "'>delete</a>";
+			$content .= " · <a href='/api/deletecomment.php?id=" . $data['commentid'] . "'>delete</a>";
 		}
 		
 		$content .=
