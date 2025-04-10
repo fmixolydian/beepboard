@@ -63,12 +63,14 @@ while ($result = $q->fetchArray(SQLITE3_ASSOC)) {
 			<p class="SongDesc">' . htmlentities($result['summary']) . '</p>
 		</div>
 		<div class="horizontal">
-			<img class="SongInteract" src="/assets/likes.png">
-			<p class="SongCounter">' . htmlentities($result['likes']) . '</p>
-			<img class="SongInteract" src="/assets/downloads.png">
-			<p class="SongCounter">' . htmlentities($result['downloads']) . '</p>
-			<img class="SongInteract" src="/assets/views.png">
-			<p class="SongCounter">' . htmlentities($result['views']) . '</p>
+			<img title="likes" class="SongInteract" src="/assets/likes.png">
+			<p title="likes" class="SongCounter">' . htmlentities($result['likes']) . '</p>
+			<img title="clicks" class="SongInteract" src="/assets/downloads.png">
+			<p title="clicks" class="SongCounter">' . htmlentities($result['downloads']) . '</p>
+			<img title="page views" class="SongInteract" src="/assets/views.png">
+			<p title="page views" class="SongCounter">' . htmlentities($result['views']) . '</p>
+			<p class="dim" title="' . date(DATE_RFC2822, $result['createdtime']) .
+			'">' . BB_time_ago($result['createdtime']) . '</p>
 		</div>
 	</div>
 	

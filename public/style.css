@@ -156,8 +156,11 @@ a {
 	flex-direction: column;
 }
 
-small, .CommentDate {
+small, .CommentDate, .dim {
 	color: lightgray;
+}
+
+small, .CommentDate {
 	font-size: 0.7em;
 }
 
