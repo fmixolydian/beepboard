@@ -30,40 +30,45 @@ require '../header.php';
 </style>
 
 <article>
-	<form method="post" action="/api/submit.php">
+	<form name="sus" method="post" action="/api/submit.php" class="Submit" onsubmit="return validateSubmitSongForm()">
+			<div class="SubmitName">
+				<p>song name <span title="the song's title, DUH :/ (3-32 chars)">(?)</span></p>
+				<input required="true" type="text" name="songname">
+			</div>
+			
+			<div class="SubmitSummary">
+				<p>song summary <span title="the song description showed in the song list (max. 120 chars)">(?)</span></p>
+				<input type="text" name="summary">
+			</div>
+			
+			<div class="SubmitDesc">
+				<p>song description <span title="the song description showed in the song page (max. 4096 chars)">(?)</span></p>
+				<textarea name="songdesc" rows="6" cols="80"></textarea>
+			</div>
+			
+			<div class="SubmitURL">
+				<p>song url</p>
+				<textarea id="SongURL" name="url" rows="1" cols="80"></textarea>
+			</div>
+			
+			<div class="SubmitMod">
+				<p>Song mod (auto detect)
+					<img id="ModLogo" src="/assets/mods/unknown.png"></img>
+					<span id="ModTitle" name="ModTitle">
+						unknown
+					</span>
+				</p>
+			</div>
+			
+			<input type="submit">
+			
+		</div>
 	
-		<label for="songname">Song Name</label>
-		<input required="true" type="text" name="songname">
-		
-		<br>
-		<br>
-		
-		<label for="summary">Song Summary</label>
-		<input name="summary" type="text"></textarea>
-		
-		<br>
-		<br>
-		
-		<label for="songdesc">Song Description</label>
-		<textarea name="songdesc"></textarea>
-		
-		<br>
-		<br>
-		
-		<label for="url">URL</label>
-		<textarea required="true" name="url"></textarea>
-		
-		<br>
-		<br>
-		
-		<label for="tags">Tags (comma separated)</label>
-		<input type="text" name="tags">
-		
-		<br>
-		<br>
-		
-		<input type="submit">
-
+	
+	<script>
+		document.getElementById("SongURL").addEventListener('input', submit_onUrlChange);
+	</script>
+	
 	</form>
 </article>
 			

@@ -259,3 +259,43 @@ form.Comment {
 	display: flex;
 	flex-direction: column;
 }
+
+form.Submit {
+	background-color: #222;
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+}
+
+.Submit div {
+	flex-grow: 1;
+	min-width: 0;
+	
+	display: flex;
+	margin-bottom: 10px;
+}
+
+.Submit div p {
+	flex-grow: 1;
+}
+
+.Submit div input {
+	flex-grow: 7;
+}
+
+.Submit p img {
+	flex-grow: 7;
+	width: 32px;
+	height: 32px;
+	margin-left: 10px;
+	transform: translateY(33%);
+}
+
+.Submit div textarea {
+	resize: none;
+}
+
+.SubmitButton {
+	width: 100%;
+	height: 30px;
+}
