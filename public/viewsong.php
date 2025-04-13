@@ -10,11 +10,19 @@ function BB_404_song() {
 }
 
 function BB_410_song() {
-	echo '<h2>410 (gone)</h2>';
-	echo '<p>The song you tried to access was deleted by its owner, or staff.</p>';
-	echo '<p>It can still be recovered by its author; however in a few weeks,
-			it will be PURGED, and will show up as a <strong>404</strong>,
-			lost forever, to the sands of time...</p>';
+	echo '<h2 style="margin-bottom: 0px">410 (gone)</h2>
+	      <cursed><small style="margin-bottom: 20px">
+	      	GONE. VANISHED. DISAPPEARED. DEPARTED. LOST. MISSING. REMOVED. REDUCED TO ASHES.
+	      </small></cursed>
+	      <p>The song you tried to access was deleted by its owner, or staff.</p>
+	      <p>It can still be recovered by its author; however in a few weeks,
+			it will be <cursed>PURGED</cursed>, and will show up as a <strong>404</strong>,
+			lost forever to the sands of time, its spirit endlessly vagabond in the void
+			of forgotten and deleted data.</p>
+		<p>Why?</p>
+		<p>Why would the author condemn his work to endlessly wander the void,
+				forgotten by reality and existance?</p>
+		<p>Only <strong><cursed>they</cursed></strong> know.</p>';
 }
 
 if (!array_key_exists('id', $_GET)) {
