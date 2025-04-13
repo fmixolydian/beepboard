@@ -58,6 +58,7 @@ require '../header.php';
 	<ul>
 		<li><strong>0.3b1</strong>: Added about page and comment deletion</li>
 		<li><strong>0.3b2</strong>: Modified submit song page, including mod auto detect</li>
+		<li><strong>0.3b3</strong>: Added song comment counter and author in song page</li>
 	</ul>
 </article>
 			

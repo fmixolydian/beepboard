@@ -53,6 +53,9 @@ while ($result = $q->fetchArray(SQLITE3_ASSOC)) {
 	$username = $db->querySingle('SELECT username FROM users WHERE userid = \'' .
 		$result['authorid'] . '\'');
 	
+	$commentno = $db->querySingle('SELECT COUNT(*) FROM comments WHERE songid = \'' .
+		$result['songid'] . '\'');
+	
 	echo '
 <article>
 	<div class="SongMeta">
@@ -69,6 +72,8 @@ while ($result = $q->fetchArray(SQLITE3_ASSOC)) {
 			<p title="clicks" class="SongCounter">' . htmlentities($result['downloads']) . '</p>
 			<img title="page views" class="SongInteract" src="/assets/views.png">
 			<p title="page views" class="SongCounter">' . htmlentities($result['views']) . '</p>
+			<img title="comments" class="SongInteract" src="/assets/comments.png">
+			<p title="comments" class="SongCounter">' . htmlentities($commentno) . '</p>
 			<p class="dim" title="' . date(DATE_RFC2822, $result['createdtime']) .
 			'">' . BB_time_ago($result['createdtime']) . '</p>
 		</div>

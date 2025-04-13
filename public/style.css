@@ -206,6 +206,8 @@ small, .CommentDate {
 .SongLinks {
 	position: absolute;
 	right: 5px;
+	display: flex;
+	gap: 5px;
 }
 
 img {

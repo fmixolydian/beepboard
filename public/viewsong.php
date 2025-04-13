@@ -16,7 +16,7 @@ BB_sqlStatement("UPDATE songs SET views = views + 1 WHERE songid = :id",
 
 $data = BB_getSongdataById($_GET['id']);
 $author = BB_getUserdataById($data['authorid'])['username'];
-
+$commentno = $db->querySingle('SELECT COUNT(*) FROM comments WHERE songid = \'' . $data['songid'] . '\'');
 ?>
 
 <style>
@@ -32,6 +32,7 @@ $author = BB_getUserdataById($data['authorid'])['username'];
 <article>
 	
 	<div class="SongLinks">
+		<p>by <em><?= $author ?></em></p>
 		<a target=_blank href="/api/downloadsong.php?id=<?= $data['songid'] ?>">
 			<img class="SongPlatform" src="/assets/beepbox.png"/>
 		</a>
@@ -72,9 +73,13 @@ $author = BB_getUserdataById($data['authorid'])['username'];
 		
 		<img class="SongInteract" src="/assets/views.png">
 		<p class="SongCounter"> <?= $data['views'] ?> </p>
+		
+		<img class="SongInteract" src="/assets/comments.png">
+		<p class="SongCounter"> <?= $commentno ?> </p>
 	</div>
 	
 	<div class="Comments">
+	
 		
 <?php
 	$q = BB_sqlStatement('SELECT * FROM comments WHERE songid = :song',
