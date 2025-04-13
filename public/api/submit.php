@@ -14,6 +14,36 @@
 	BB_default($_POST['summary'],  "(no summary)");
 	BB_default($_POST['songdesc'], "(no description)");
 	
+	# do a bunch of verification
+	
+	# url
+	filter_var($_POST['url'], FILTER_SANITIZE_URL);
+	if (!filter_var($_POST['url'], FILTER_VALIDATE_URL)) {
+		http_response_code(400);
+		echo "invalid url";
+		die;
+	}
+	
+	# check if url is one of the beepmods
+	$urlvalid = false;
+	foreach (BEEPMODS_URL as $mod => $modurl) {
+		if (str_starts_with($_POST['url'], $modurl)) {
+			$urlvalid = true;
+			break;
+		}
+	}
+	if (!$urlvalid) {
+		http_response_code(400);
+		echo "invalid url";
+		die;
+	}
+	
+	if (count(explode(",", $_POST['tags'])) > 16) {
+		http_response_code(400);
+		echo "too many tags";
+		die;
+	 }
+	
 	# first, get authorid from token
 	if (!array_key_exists("token", $_COOKIE)) {
 		header("Location: /login.php");

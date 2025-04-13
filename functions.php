@@ -2,6 +2,19 @@
 	
 	if (!defined('BB_IMPORTED')) {
 		
+		define('BEEPMODS_URL', array(
+			"abyssbox"    => 'https://choptop84.github.io/abyssbox-app/',
+			"beepbox"     => 'https://www.beepbox.co',
+			"goldbox"     => 'https://aurysystem.github.io/goldbox/',
+			"jummbox"     => 'https://jummb.us',
+			"modbox"      => 'https://moddedbeepbox.github.io/3.0/',
+			"pandorasbox" => 'https://paandorasbox.github.io/',
+			"sandbox"     => 'https://fillygroove.github.io/sandbox-3.1/',
+			"slarmoosbox" => 'https://slarmoo.github.io/slarmoosbox/website/',
+			"ultrabox"    => 'https://ultraabox.github.io/',
+			"wackybox"    => 'https://bluecatgamer.github.io/Wackybox/'
+		));
+		
 		define('BB_IMPORTED', 1);
 		
 		$db = new SQLite3(DB_PATH);
