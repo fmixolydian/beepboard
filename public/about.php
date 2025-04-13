@@ -60,6 +60,16 @@ require '../header.php';
 		<li><strong>0.3b2</strong>: Modified submit song page, including mod auto detect</li>
 		<li><strong>0.3b3</strong>: Added song comment counter and author in song page</li>
 	</ul>
+	
+	
+	<h3>
+		<img src="/assets/old/0.4.png"> 0.4 <small>unreleased</small>
+	</h3>
+	<p>Changed versioning system again; Song and search changes</p>
+	<p>Versions:</p>
+	<ul>
+		<li><strong>0.4.0</strong>: Added song deletion</li>
+	</ul>
 </article>
 			
 		</main>

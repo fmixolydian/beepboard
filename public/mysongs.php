@@ -1,49 +1,47 @@
 <?php
 
-require '../header.php';
+require '../config.php';
+require '../functions.php';
 
-BB_default($_GET['sort'],  'newest');
-BB_default($_GET['after'], 0);
-
-
-$statement = "SELECT * from songs ";
-$statement_footer = " LIMIT 10 OFFSET :offset";
-
-switch ($_GET['sort']) {
-	case 'random':
-		$statement .= "ORDER BY RANDOM()";
-		break;
-		
-	case 'featured':
-		$statement .= "WHERE featured = 1";
-		break;
+if (array_key_exists("token", $_COOKIE)) {
 	
-	case 'newest':
-		$statement .= "ORDER BY createdtime DESC";
-		break;
+	$data = BB_getUserdataByToken($_COOKIE['token']);
 	
-	case 'popular':
-		$statement .= "ORDER BY likes DESC, downloads DESC";
-		break;
-		
-	default:
-		http_response_code(400);
+	if ($data == NULL) {
+		header('Location: /login.php');
 		die;
+	}
+} else {
+	header('Location: /login.php');
+	die;
 }
 
-$statement .= $statement_footer;
+$song_count = $db->querySingle("SELECT COUNT(*) as count FROM songs WHERE authorid = '"
+					. $data['userid'] . "'");
 
-$q = BB_sqlStatement($statement, array(':offset' => $_GET['after']));
+BB_default($_GET['after'], 0);
+
+$q = BB_sqlStatement("SELECT * FROM songs WHERE authorid = :user LIMIT 10 OFFSET :offset",
+					array(':offset' => $_GET['after'], ':user' => $data['userid']));
+
+
+require '../header.php';
 
 ?>
-			<h2>song list</h2>
-			<p>Sort by <a href="/songs.php?sort=featured">featured</a>,
-			           <a href="/songs.php?sort=newest">newest</a>,
-			           <a href="/songs.php?sort=popular">popular</a>,
-			           <a href="/songs.php?sort=random">random</a>
-			           </p>
+			<h2>my songs</h2>
 			<div class="songs">
-			
+
+<?php
+	if ($song_count == 0) {
+		echo '
+			<p class="textcenter">
+				Looks like you haven\'t uploaded any songs yet.<br>
+				<img src="/assets/downvote.png"> Click this link  to submit one! <img src="/assets/downvote.png">
+			</p>
+		';
+	}
+?>
+
 <?php
 
 while ($result = $q->fetchArray(SQLITE3_ASSOC)) {
@@ -71,14 +69,16 @@ while ($result = $q->fetchArray(SQLITE3_ASSOC)) {
 			<p title="page views" class="SongCounter">' . htmlentities($result['views']) . '</p>
 			<img title="comments" class="SongInteract" src="/assets/comments.png">
 			<p title="comments" class="SongCounter">' . htmlentities($commentno) . '</p>
-			<p class="dim" title="' . date(DATE_RFC2822, $result['createdtime']) .
-			'">' . BB_time_ago($result['createdtime']) . '</p>
+			<p class="dim"><span title="' . date(DATE_RFC2822, $result['createdtime']) .
+			'">' . BB_time_ago($result['createdtime']) . '</span>
+			· <a href="/api/deletesong.php?id=' . $result['songid'] . '"
+				onclick="return confirm(\'Are you sure you want to delete this song?\')">delete</a>
+			</p>
 		</div>
 	</div>
 	
 	<div class="SongData">
 		<div class="Platforms">
-			<p> by <em class="SongAuthor">' . htmlentities($username) . '</em></p>
 			<a target=_blank href="/api/downloadsong.php?id=' . $result['songid'] . '">
 				<img class="SongPlatform" src="/assets/beepbox.png"/>
 			</a>
@@ -91,20 +91,12 @@ while ($result = $q->fetchArray(SQLITE3_ASSOC)) {
 ?>
 			</div>
 			
+			<p class="textcenter"><a href="/submit.php">submit song</a></p>
+			
 			<footer>
-				<p>
-					<a href=<?='songs.php?sort=' .
-					max($_GET['sort'].'&after='.($_GET['after']-10), 0) ?> >
-						&lt;
-					</a>
-					
+				<p><a href=<?='songs.php?after='.max(($_GET['after']-10), 0) ?>>&lt;</a>
 					Page <?= $_GET['after'] / 10 + 1 ?>
-					
-					<a href=<?='songs.php?sort=' .
-						min($_GET['sort'].'&after='.($_GET['after']+10), 0) ?> >
-						&gt;
-					</a>
-				</p>
+					<a href=<?='songs.php?after='.min(($_GET['after']+10), 0) ?>>&gt;</a>
 			</footer>
 		</main>
 	</body>

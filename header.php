@@ -56,7 +56,7 @@
 		<iframe id="null" name="null"></iframe>
 		<main>
 			<header>
-				<h1>beepboard<sub>0.3</sub></h1>
+				<h1>beepboard<sub>0.4.0</sub></h1>
 				<p>a bulletin board for beepbox songs<br>
 				<small>sorry if the ui is terrible, i suck at frontend design lmao</small></p>
 			</header>
@@ -87,7 +87,7 @@
 			<nav>
 				<a href="/index.php">home</a>
 				<a href="/songs.php">song list</a>
-				<a href="/submit.php">submit</a>
+				<a href="/mysongs.php">my songs / submit</a>
 				<a href="/about.php">about</a>
 
 			</nav>

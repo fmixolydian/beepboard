@@ -24,7 +24,6 @@ body {
 main {
 	width: 800px;
 	padding: 5px;
-	min-height: 600px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 60px;
@@ -63,7 +62,6 @@ nav a {
 	display: flex;
 	flex-direction: column;
 	gap: 5px;
-	min-height: 400px;
 }
 
 .songs article {
@@ -299,5 +297,8 @@ form.Submit {
 
 .textright {
 	text-align: right;
-	flex-grow: 1;
+}
+
+.textcenter {
+	text-align: center;
 }
