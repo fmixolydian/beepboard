@@ -6,7 +6,7 @@ BB_default($_GET['sort'],  'newest');
 BB_default($_GET['after'], 0);
 
 
-$statement = "SELECT * from songs WHERE deleted = 0 ";
+$statement = "SELECT * from songs ";
 $statement_footer = " LIMIT 10 OFFSET :offset";
 
 switch ($_GET['sort']) {
@@ -15,7 +15,7 @@ switch ($_GET['sort']) {
 		break;
 		
 	case 'featured':
-		$statement .= "AND featured = 1";
+		$statement .= "WHERE featured = 1";
 		break;
 	
 	case 'newest':
