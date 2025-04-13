@@ -5,9 +5,9 @@
 	
 	# get user data
 	if (array_key_exists('token', $_COOKIE)) {
-		$data = BB_getUserdataByToken($_COOKIE['token']);
+		$userdata = BB_getUserdataByToken($_COOKIE['token']);
 	} else {
-		$data = null;
+		$userdata = null;
 	}
 	
 	# get user theme
@@ -41,8 +41,8 @@
 
 <?php
 	
-	if ($data) {
-		echo '<link rel="stylesheet" href="/themes/' . $data['theme'] .'.css">';
+	if ($userdata) {
+		echo '<link rel="stylesheet" href="/themes/' . $userdata['theme'] .'.css">';
 	} else {
 		echo '<link rel="stylesheet" href="/themes/default.css">';
 	}
@@ -65,8 +65,8 @@
 
 <div class="left">
 	<?php
-		if ($data) {
-			echo "<p>" . $data['username'] . "</p>";
+		if ($userdata) {
+			echo "<p>" . $userdata['username'] . "</p>";
 		} else {
 			echo "<p>You're not logged in.</p>";
 		}

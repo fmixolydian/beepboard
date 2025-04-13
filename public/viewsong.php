@@ -21,12 +21,11 @@ if (!$data) {
 	goto missing_song;
 } 
 
-var_dump($data);
+require '../header.php';
 
 $author = BB_getUserdataById($data['authorid'])['username'];
 $commentno = $db->querySingle('SELECT COUNT(*) FROM comments WHERE songid = \'' . $data['songid'] . '\'');
 
-require '../header.php';
 ?>
 
 <style>
@@ -42,7 +41,8 @@ require '../header.php';
 		</a>
 	</div>
 	
-	<h1><?= $data['name'] ?> </h1>
+	
+	<h1><?php echo $data['name'] ?> </h1>
 	<p><?= $data['description'] ?> </p>
 	
 	<div class="horizontal">
