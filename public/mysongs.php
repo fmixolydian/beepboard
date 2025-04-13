@@ -17,11 +17,11 @@ if (array_key_exists("token", $_COOKIE)) {
 }
 
 $song_count = $db->querySingle("SELECT COUNT(*) as count FROM songs WHERE authorid = '"
-					. $data['userid'] . "'");
+					. $data['userid'] . "' AND deleted = 0");
 
 BB_default($_GET['after'], 0);
 
-$q = BB_sqlStatement("SELECT * FROM songs WHERE authorid = :user LIMIT 10 OFFSET :offset",
+$q = BB_sqlStatement("SELECT * FROM songs WHERE authorid = :user AND deleted = 0 LIMIT 10 OFFSET :offset",
 					array(':offset' => $_GET['after'], ':user' => $data['userid']));
 
 

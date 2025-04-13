@@ -69,6 +69,8 @@ require '../header.php';
 	<p>Versions:</p>
 	<ul>
 		<li><strong>0.4.0</strong>: Added song deletion & 'my songs' page</li>
+		<li><strong>0.4.1</strong>: Songs dont get deleted, but instead end up in the trash;
+									added 404 pages for songs</li>
 	</ul>
 </article>
 			

@@ -3,6 +3,20 @@
 require '../config.php';
 require '../functions.php';
 
+function BB_404_song() {
+	echo '<h2>404 (no such song)</h2>';
+	echo '<p>You either specified an invalid ID, or the servers bugged somewhere
+			and forgot to create the song.</p>';
+}
+
+function BB_410_song() {
+	echo '<h2>410 (gone)</h2>';
+	echo '<p>The song you tried to access was deleted by its owner, or staff.</p>';
+	echo '<p>It can still be recovered by its author; however in a few weeks,
+			it will be PURGED, and will show up as a <strong>404</strong>,
+			lost forever, to the sands of time...</p>';
+}
+
 if (!array_key_exists('id', $_GET)) {
 	http_response_code(400);
 	echo "You must specify an ID!";
@@ -18,8 +32,16 @@ $data = BB_getSongdataById($_GET['id']);
 if (!$data) {
 	http_response_code(404);
 	require '../header.php';
+	BB_404_song();
 	goto missing_song;
 } 
+
+if ($data['deleted']) {
+	http_response_code(410);
+	require '../header.php';
+	BB_410_song();
+	goto missing_song;
+}
 
 require '../header.php';
 
