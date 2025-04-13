@@ -38,7 +38,7 @@
 		die;
 	}
 	
-	BB_sqlStatement("DELETE FROM songs WHERE songid = :id",
+	BB_sqlStatement("UPDATE songs SET deleted = 1 WHERE songid = :id",
 						array(
 							':id' =>  $_GET['id']
 						)

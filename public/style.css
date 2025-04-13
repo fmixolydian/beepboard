@@ -69,6 +69,13 @@ nav a {
 	display: flex;
 }
 
+article.song {
+	width: calc(800px - 10px * 2);
+	padding: 10px;
+	min-height: 200px;
+	position: relative;
+}
+
 h1 {
 	margin: 0px;
 }

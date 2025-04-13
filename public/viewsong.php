@@ -1,6 +1,7 @@
 <?php
 
 require '../config.php';
+require '../functions.php';
 
 if (!array_key_exists('id', $_GET)) {
 	http_response_code(400);
@@ -8,29 +9,32 @@ if (!array_key_exists('id', $_GET)) {
 	die;
 }
 
-require '../header.php';
 
 BB_sqlStatement("UPDATE songs SET views = views + 1 WHERE songid = :id",
 					array(':id' => $_GET['id'])
 				);
 
 $data = BB_getSongdataById($_GET['id']);
+if (!$data) {
+	http_response_code(404);
+	require '../header.php';
+	goto missing_song;
+} 
+
+var_dump($data);
+
 $author = BB_getUserdataById($data['authorid'])['username'];
 $commentno = $db->querySingle('SELECT COUNT(*) FROM comments WHERE songid = \'' . $data['songid'] . '\'');
+
+require '../header.php';
 ?>
 
 <style>
-	article {
-		background-color: #222;
-		width: calc(800px - 10px * 2);
-		padding: 10px;
-		min-height: 200px;
-		position: relative;
-	}
 </style>
 
-<article>
-	
+<article class="song">
+
+
 	<div class="SongLinks">
 		<p>by <em><?= $author ?></em></p>
 		<a target=_blank href="/api/downloadsong.php?id=<?= $data['songid'] ?>">
@@ -152,7 +156,9 @@ $commentno = $db->querySingle('SELECT COUNT(*) FROM comments WHERE songid = \'' 
 	} else {
 		echo '<p><a href="/login.php">Login</a> to post comments</p>';
 	}
-	
+
+missing_song:
+
 ?>
 	
 	<div class="horizontal">

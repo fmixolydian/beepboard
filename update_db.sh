@@ -75,6 +75,7 @@ add_column songs createdtime "INTEGER"
 add_column songs tags "TEXT"
 add_column songs name "TEXT"
 add_column songs summary "TEXT"
+add_column songs deleted "INTEGER NOT NULL DEFAULT 0"
 add_column songs featured "INTEGER NOT NULL DEFAULT 0"
 add_column songs description "TEXT"
 finalize_table songs
