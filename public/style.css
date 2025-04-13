@@ -97,6 +97,8 @@ ul {
 
 .SongName {
 	font-weight: bold;
+	flex-shrink: 1;
+	max-width: 400px;
 }
 
 .Platforms {
@@ -113,10 +115,11 @@ ul {
 }
 
 .SongDesc {
+	flex-shrink: 1;
 	font-style: italic;
 	overflow-wrap: break-word;
 	margin-right: 10px;
-	max-width: 400px;
+	max-width: 600px;
 }
 
 .SongMeta {

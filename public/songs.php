@@ -59,10 +59,9 @@ while ($result = $q->fetchArray(SQLITE3_ASSOC)) {
 	echo '
 <article class="song">
 	<div class="SongMeta">
-		<div class="horizontal">
+		<div class="vertical">
 			<p class="SongName"><a href="/viewsong.php?id=' . $result['songid'] . '">' .
 				htmlentities($result['name']) . '</a></p>
-			<p> · </p>
 			<p class="SongDesc">' . htmlentities($result['summary']) . '</p>
 		</div>
 		<div class="horizontal">

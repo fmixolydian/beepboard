@@ -43,6 +43,8 @@
 	
 	if ($data) {
 		echo '<link rel="stylesheet" href="/themes/' . $data['theme'] .'.css">';
+	} else {
+		echo '<link rel="stylesheet" href="/themes/default.css">';
 	}
 	
 ?>
