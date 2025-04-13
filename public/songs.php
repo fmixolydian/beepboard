@@ -94,14 +94,14 @@ while ($result = $q->fetchArray(SQLITE3_ASSOC)) {
 			<footer>
 				<p>
 					<a href=<?='songs.php?sort=' .
-					max($_GET['sort'].'&after='.($_GET['after']-10), 0) ?> >
+						max($_GET['sort'].'&after='.($_GET['after']-10), 0) ?>>
 						&lt;
 					</a>
 					
 					Page <?= $_GET['after'] / 10 + 1 ?>
 					
 					<a href=<?='songs.php?sort=' .
-						min($_GET['sort'].'&after='.($_GET['after']+10), 0) ?> >
+						min($_GET['sort'].'&after='.($_GET['after']+10), 0) ?>>
 						&gt;
 					</a>
 				</p>

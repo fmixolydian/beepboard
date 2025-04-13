@@ -28,7 +28,7 @@ require '../header.php';
 	</h3>
 	<p>Initial version - only contained the song list, submit function,
 		and account login.</p>
-	<p>Patches:</p>
+	<p>Versions:</p>
 	<ul>
 		<li><strong>0.1.1</strong>: Split summary and description. Site is now public.</li>
 		<li><strong>0.1.2</strong>: Added account registering and modified downloads icon.</li>
@@ -41,7 +41,7 @@ require '../header.php';
 		<img src="/assets/old/0.2.png"> 0.2 <small>7 April 2025</small>
 	</h3>
 	<p>Added likes, dislikes, and new icons (made by <code>spongycool</code>).</p>
-	<p>Patches:</p>
+	<p>Versions:</p>
 	<ul>
 		<li><strong>0.2.1</strong>: Added beepbox links to song page</li>
 		<li><strong>0.2.2</strong>: Fixed blurry images and added a favicon</li>
@@ -63,12 +63,12 @@ require '../header.php';
 	
 	
 	<h3>
-		<img src="/assets/old/0.4.png"> 0.4 <small>unreleased</small>
+		<img src="/assets/old/0.4.png"> 0.4 <small>TBD</small>
 	</h3>
-	<p>Changed versioning system again; Song and search changes</p>
+	<p>Changed versioning system again, along with major song and search changes.</p>
 	<p>Versions:</p>
 	<ul>
-		<li><strong>0.4.0</strong>: Added song deletion</li>
+		<li><strong>0.4.0</strong>: Added song deletion & 'my songs' page</li>
 	</ul>
 </article>
 			
