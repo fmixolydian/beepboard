@@ -73,7 +73,7 @@ $commentno = $db->querySingle('SELECT COUNT(*) FROM comments WHERE songid = \'' 
 	
 	
 	<h1><?php echo $data['name'] ?> </h1>
-	<p><?= $data['description'] ?> </p>
+	<p><pre><?= $data['description'] ?></pre></p>
 	
 	<div class="horizontal">
 		<img class="SongInteract" src="/assets/likes.png">
