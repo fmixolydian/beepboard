@@ -75,7 +75,7 @@
 
 <div class="right">
 	<?php
-		if ($data) {
+		if ($userdata) {
 			echo "<p><a href='/api/logout.php'>Logout</a></p>";
 		} else {
 			echo "<p><a href='/login.php'>Login</a></p>";
