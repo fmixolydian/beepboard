@@ -101,7 +101,7 @@ while ($result = $q->fetchArray(SQLITE3_ASSOC)) {
 					Page <?= $_GET['after'] / 10 + 1 ?>
 					
 					<a href=<?='songs.php?sort=' .
-						$_GET['sort'] . '&after=' . min(($_GET['after']+10), 0) ?>>
+						$_GET['sort'] . '&after=' . ($_GET['after']+10) ?>>
 						&gt;
 					</a>
 				</p>
