@@ -51,7 +51,7 @@ require '../header.php';
 	
 	
 	<h3>
-		<img src="/assets/old/0.3.png"> 0.3 <small>-</small>
+		<img src="/assets/old/0.3.png"> 0.3 <small>13 April 2025</small>
 	</h3>
 	<p>Changed versioning system; general frontend and UI changes.</p>
 	<p>Betas:</p>
