@@ -14,7 +14,6 @@
 }
 
 body {
-	background-color: #111;
 	font-family: 'B612', helvetica, sans-serif;
 	color: white;
 	font-size: 12pt;
@@ -54,7 +53,6 @@ nav {
 nav a {
 	list-style-type: none;
 	flex: 1;
-	background-color: #222;
 	padding: 5px;
 	padding-left: 10px;
 	box-shadow: 0px 5px 10px black;
@@ -70,7 +68,6 @@ nav a {
 
 .songs article {
 	padding: 10px;
-	background-color: #222;
 	display: flex;
 }
 
@@ -96,10 +93,6 @@ img {
 
 ul {
 	padding-bottom: 5px;
-}
-
-a {
-	color: #9988ff;
 }
 
 .SongName {
@@ -154,10 +147,6 @@ a {
 .vertical {
 	display: flex;
 	flex-direction: column;
-}
-
-small, .CommentDate, .dim {
-	color: lightgray;
 }
 
 small, .CommentDate {
@@ -226,7 +215,6 @@ img {
 }
 
 .Comment {
-	background-color: #333;
 	width: calc(800px - 10px * 4);
 	padding: 10px;
 	
@@ -300,4 +288,13 @@ form.Submit {
 .SubmitButton {
 	width: 100%;
 	height: 30px;
+}
+
+.textleft {
+	align-text: left;
+}
+
+.textright {
+	text-align: right;
+	flex-grow: 1;
 }

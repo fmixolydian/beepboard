@@ -52,13 +52,15 @@ require '../header.php';
 			</div>
 			
 			<div class="SubmitMod">
-				<p>Song mod (auto detect)
+				<p>song mod (auto detect)
 					<img id="ModLogo" src="/assets/mods/unknown.png"></img>
 					<span id="ModTitle" name="ModTitle">
 						unknown
 					</span>
 				</p>
 			</div>
+			
+			<small>(<strong>warning</strong>: tinyurl/isgd/etc links are NOT allowed!)</small>
 			
 			<input type="submit">
 			

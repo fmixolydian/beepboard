@@ -57,7 +57,7 @@ while ($result = $q->fetchArray(SQLITE3_ASSOC)) {
 		$result['songid'] . '\'');
 	
 	echo '
-<article>
+<article class="song">
 	<div class="SongMeta">
 		<div class="horizontal">
 			<p class="SongName"><a href="/viewsong.php?id=' . $result['songid'] . '">' .

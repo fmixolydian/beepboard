@@ -1,0 +1,30 @@
+body {
+	background-color: black;
+}
+
+nav a {
+	background-color: #111;
+}
+
+article.song {
+	background-color: #222;
+}
+
+article.page {
+	background-color: #222;
+	width: calc(800px - 10px * 2);
+	padding: 10px;
+	min-height: 200px;
+}
+
+a {
+	color: #a8f;
+}
+
+small, .CommentDate, .dim {
+	color: lightgray;
+}
+
+.Comment {
+	background-color: #333;
+}
